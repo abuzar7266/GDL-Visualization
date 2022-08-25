@@ -7,12 +7,12 @@ class App extends Component{
     {
     return (<>  
     <div style={{marginTop:0}}>
-    <BrowserRouter>
-      <Routes>
-              <Route path='/' element={<Home/>}/>
-              <Route path='/profile' element={<Profile/>}/>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/profile' element={<Profile/>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
       </>);
     }
