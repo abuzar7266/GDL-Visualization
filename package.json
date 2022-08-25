@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "pyscript-js": "^1.2.4",
-    "react-router-dom": "^6.3.0"
-  }
-}
