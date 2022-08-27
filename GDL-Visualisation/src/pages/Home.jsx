@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
+    <div>
     <Container style={{textAlign:'right'}}>
         <div  style={{zIndex:'2',position:'absolute'}}>
         <Row>
@@ -51,7 +52,27 @@ const LandingPage = ()=>{
                 </Col>
             </Row>
         </div>
+        <br /><br />
     </Container>
+    </div>
+    <div style={{height:'100%',backgroundColor:'#9EC2EA',width:'110%',zIndex:'1',position:'absolute',color:'black',top:'130%'}}>
+        <Container style={{textAlign:'center',marginTop:'12%'}} fluid>
+            <Row>
+                <Col
+                sm={2}
+                >
+                
+                </Col>
+                <Col
+                sm={8}
+                >
+                <div className="card-intro">
+                    <p className="start-intro">Our website provides series of algoirthmic visualisation related to geometric deep learning. We have developed a story that demonstrates the all the traditional algorithms previously in animated visualisation</p>
+                </div>
+                </Col>
+            </Row>
+        </Container>
+    </div>
     </>)
 }
 export default LandingPage;
