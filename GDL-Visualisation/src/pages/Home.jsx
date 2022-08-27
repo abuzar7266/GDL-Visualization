@@ -50,9 +50,6 @@ const LandingPage = ()=>{
             </Row>
         </div>
     </Container>
-    <Container>
-        <Row></Row>
-    </Container>
     </>)
 }
 export default LandingPage;
