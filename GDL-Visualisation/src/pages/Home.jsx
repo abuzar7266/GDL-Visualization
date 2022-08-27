@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Container,Row,Col } from "react-bootstrap";
 import '../assets/css/Home.css';
 import GraphTrans from '../assets/img/GraphTrans.png';
+import { useNavigate } from "react-router-dom";
 const LandingPage = ()=>{
+    const navigate = useNavigate();
     return (<>
     <Container style={{textAlign:'right'}}>
         <div  style={{zIndex:'2',position:'absolute'}}>
@@ -33,7 +35,7 @@ const LandingPage = ()=>{
             >
             </Col>
             <Col sm={3}>
-                <button className="Start-Button">Get Started</button>
+                <button className="Start-Button" onClick={() => navigate("/intro")}>Get Started</button>
             </Col>
         </Row>
         </div>
