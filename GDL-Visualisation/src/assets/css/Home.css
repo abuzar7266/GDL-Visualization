@@ -43,6 +43,15 @@
 .img-anim{
     animation: rotation 60s infinite linear;
 }
+.text-middle{
+  position: absolute;
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 34px;
+  line-height: 50px;
+}
 @keyframes rotation {
     from {
       transform: rotate(0deg);
