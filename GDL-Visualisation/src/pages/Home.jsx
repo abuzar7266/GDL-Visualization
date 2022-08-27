@@ -7,46 +7,29 @@ import { useNavigate } from "react-router-dom";
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
-    <Container style={{textAlign:'right'}}>
-        <div  style={{zIndex:'2',position:'absolute'}}>
+    <Container style={{textAlign:'left'}}>
+        <div  style={{zIndex:'2', position:'absolute'}}>
         <Row>
-            <br /><br /><br /><br />
-        </Row>
-        <Row>
-            <Col
-             sm={2}
-            >
-            
-            </Col>
-            <Col lg={7}
-                md={10}
-                xl={7}
-                sm={12}>
-                <span className="title">FYP Name</span><br />
-                <span className="subtitle">Algorithmic Visualisation of Geometric Deep Learning</span>
+            <Col>
+                <div className="title-div">
+                    <span className="title">FYP Name</span><br />
+                    <span className="subtitle">Algorithmic Visualisation of Geometric Deep Learning</span>
+                </div>
             </Col>
         </Row>
         <Row>
-            <br />
-        </Row>
-        <Row>
-            <Col
-            sm={6}
-            >
-            </Col>
-            <Col sm={3}>
-                <button className="Start-Button" onClick={() => navigate("/intro")}>Get Started</button>
+            <Col>
+                <div className="button-div">
+                    <button className="Start-Button" onClick={() => navigate("/intro")}>Get Started</button>
+                </div>
             </Col>
         </Row>
         </div>
         <div style={{zIndex:'3'}}>
             <Row>
-                <br /><br /><br /><br /><br />
-            </Row>
-            <Row>
-                <Col sm={11}>
+                <Col>
                 </Col>
-                <Col sm={1}>
+                <Col>
                     <img src={GraphTrans} alt="..." height='700' width='700' fluid className="img-anim"/>
                 </Col>
             </Row>

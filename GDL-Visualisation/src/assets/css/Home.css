@@ -9,22 +9,28 @@
 
     mix-blend-mode: normal;
 }
+
+.title-div{
+    margin-top: 10vh;
+    margin-right: 50vw;
+    margin-left: 8vw;
+}
+
 .subtitle{
     font-family: 'Nunito Sans', sans-serif;
     font-style: normal;
     font-weight: 200;
     font-size: 3vw;
     line-height: 2.5vw;
-    text-align: right;
-    /* margin-right: 8vw; */
+    text-align: left;
 
     color: #FFFFFF;
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .Start-Button{
-    height: 60px;
-    width: 150px;
+    height: 8vh;
+    width: 10vw;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: 1.2vw;
@@ -33,8 +39,15 @@
     box-shadow: 10px 10px 20px 3px rgba(0, 0, 0, 0.25);
     border-radius: 20px 0px;
     border:2px solid #0F7BB0;
-    cursor:pointer;
+    cursor: pointer;
 }
+
+.button-div{
+    margin-top: 5vh;
+    margin-left: 35vw;
+
+}
+
 .Start-Button:hover{
   color: black;
   background-color: #0F7BB0;
@@ -42,7 +55,11 @@
   box-shadow: 10px 10px 20px 3px rgba(67, 67, 67, 0.25);
 }
 .img-anim{
+    margin-left: 47vw;
+    margin-top: 12vh;
     animation: rotation 60s infinite linear;
+    max-width: 50vw;
+    max-height: 50vw;
 }
 .text-middle{
   position: absolute;
