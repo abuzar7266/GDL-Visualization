@@ -1,3 +1,4 @@
+import Navbar from './component/navbar.jsx';
 import React, { Component } from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Home from './pages/Home'
@@ -11,7 +12,8 @@ class App extends Component{
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/intro' element={<Profile/>}/>
+          <Route path='/vis' element={<Home/>}/>
         </Routes>
       </BrowserRouter>
     </div>

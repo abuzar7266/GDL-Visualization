@@ -1,0 +1,46 @@
+.title{
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: light;
+    font-weight: 600;
+    font-size: 78px;
+    line-height: 100px;
+
+    color: #FFFFFF;
+
+    mix-blend-mode: normal;
+}
+.subtitle{
+    font-family: 'Nunito Sans', sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 34px;
+    line-height: 50px;
+    text-align: right;
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.Start-Button{
+    height: 60px;
+    width: 150px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size:Large;
+    color: gray;
+    background: #ffffff;
+    mix-blend-mode: normal;
+    box-shadow: 10px 10px 20px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 0px;
+}
+.img-anim{
+    animation: rotation 50s infinite linear;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }

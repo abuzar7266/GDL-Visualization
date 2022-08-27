@@ -1,7 +1,8 @@
 import React from "react";
+import Navbar from '../component/navbar.jsx';
 const Test = ()=>{
     return (<>
-    <h3>Hello World, to Profile</h3>
+    <Navbar/>
     </>)
 }
 export default Test;
