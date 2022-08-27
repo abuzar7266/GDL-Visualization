@@ -5,8 +5,8 @@ import '../assets/css/Home.css';
 import GraphTrans from '../assets/img/GraphTrans.png';
 const LandingPage = ()=>{
     return (<>
-    <Container fluid>
-        <div style={{zIndex:'2',position:'absolute'}}>
+    <Container style={{textAlign:'right'}}>
+        <div  style={{zIndex:'2',position:'absolute'}}>
         <Row>
             <br /><br /><br /><br />
         </Row>
@@ -37,18 +37,21 @@ const LandingPage = ()=>{
             </Col>
         </Row>
         </div>
-        <div style={{zIndex:'3', position:'absolute'}}>
+        <div style={{zIndex:'3'}}>
             <Row>
                 <br /><br /><br /><br /><br />
             </Row>
             <Row>
-                <Col sm={10}>
+                <Col sm={11}>
                 </Col>
-                <Col sm={2}>
+                <Col sm={1}>
                     <img src={GraphTrans} alt="..." height='700' width='700' fluid className="img-anim"/>
                 </Col>
             </Row>
         </div>
+    </Container>
+    <Container>
+        <Row></Row>
     </Container>
     </>)
 }
