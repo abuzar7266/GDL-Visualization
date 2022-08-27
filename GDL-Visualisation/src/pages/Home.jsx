@@ -59,7 +59,7 @@ const LandingPage = ()=>{
         <Container style={{textAlign:'center',marginTop:'12%'}} fluid>
             <Row>
                 <Col
-                sm={2}
+                sm={1}
                 >
                 
                 </Col>
@@ -67,7 +67,7 @@ const LandingPage = ()=>{
                 sm={8}
                 >
                 <div className="card-intro">
-                    <p className="start-intro">Our website provides series of algoirthmic visualisation related to geometric deep learning. We have developed a story that demonstrates the all the traditional algorithms previously in animated visualisation</p>
+                    <p style={{overflow:'hidden'}}>Our website provides series of algoirthmic visualisation related to geometric deep learning. We have developed a story that demonstrates the all the traditional algorithms previously in animated visualisation</p>
                 </div>
                 </Col>
             </Row>
