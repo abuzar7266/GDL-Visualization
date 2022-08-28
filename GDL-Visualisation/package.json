@@ -9,13 +9,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@d3/force-directed-graph": "https://api.observablehq.com/@d3/force-directed-graph.tgz?v=3",
+    "@observablehq/runtime": "^4.23.0",
     "@react-three/drei": "^9.23.6",
     "@react-three/fiber": "^8.6.0",
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "d3": "^7.6.1",
+    "d3-force": "^3.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
+    "react-force-graph-3d": "^1.21.13",
     "react-router-dom": "^6.3.0",
     "three": "^0.143.0"
   },

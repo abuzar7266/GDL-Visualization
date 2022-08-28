@@ -4,6 +4,9 @@ import { Container,Row,Col } from "react-bootstrap";
 import '../assets/css/Home.css';
 import GraphTrans from '../assets/img/GraphTrans.png';
 import { useNavigate } from "react-router-dom";
+import * as d3 from 'd3';
+import { useRef } from "react";
+import { useEffect } from "react";
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
@@ -25,16 +28,32 @@ const LandingPage = ()=>{
             </Col>
         </Row>
         </div>
-        <div style={{zIndex:'3'}}>
+        <div>
             <Row>
-                <Col>
-                </Col>
                 <Col>
                     <img src={GraphTrans} alt="..." height='700' width='700' fluid className="img-anim"/>
                 </Col>
             </Row>
         </div>
     </Container>
+    {/*<div className='easeIntroIn'>
+        <Container style={{textAlign:'center',marginTop:'12%'}} fluid>
+            <Row>
+                <Col
+                sm={1}
+                >
+                
+                </Col>
+                <Col
+                sm={8}
+                >
+                <div className="card-intro">
+                    <p className="start-intro">Our website provides series of algoirthmic visualisation related to geometric deep learning. We have developed a story that demonstrates the all the traditional algorithms previously in animated visualisation</p>
+                </div>
+                </Col>
+            </Row>
+        </Container>
+    </div>*/}
     </>)
 }
 export default LandingPage;
