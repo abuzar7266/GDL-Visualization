@@ -1,78 +1,65 @@
 .title{
-    font-family: 'Nunito Sans', sans-serif;
-    font-style: light;
-    font-weight: 600;
-    font-size: 78px;
-    line-height: 100px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: light;
+  font-weight: 600;
+  font-size: 6vw;
+  line-height: 7vw;
 
-    color: #FFFFFF;
+  color: #FFFFFF;
 
-    mix-blend-mode: normal;
+  mix-blend-mode: normal;
 }
 
 .title-div{
-    margin-top: 10vh;
-    margin-right: 50vw;
-    margin-left: 8vw;
+  margin-top: 10vh;
+  margin-right: 50vw;
+  margin-left: 8vw;
 }
 
 .subtitle{
-    font-family: 'Nunito Sans', sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 34px;
-    line-height: 50px;
-    text-align: right;
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 3vw;
+  line-height: 2.5vw;
+  text-align: left;
 
-    color: #FFFFFF;
+  color: #FFFFFF;
 
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-.start-intro{
-    font-family: 'Nunito Sans', sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    font-size: 25px;
-    line-height: 50px;
-    text-align: right;
-
-    color: #212121;
-
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    max-width:800px;
-    word-wrap:break-word;
-    text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .Start-Button{
-    height: 8vh;
-    width: 10vw;
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 400;
-    font-size:Large;
-    color: gray;
-    background-color: transparent;
-    box-shadow: 10px 10px 20px 3px rgba(0, 0, 0, 0.25);
-    border-radius: 20px 0px;
-    border:2px solid #0F7BB0;
-    cursor: pointer;
+  height: 8vh;
+  width: 10vw;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.2vw;
+  color: gray;
+  background-color: transparent;
+  box-shadow: 10px 10px 20px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 0px;
+  border:2px solid #0F7BB0;
+  cursor: pointer;
 }
 
 .button-div{
-    margin-top: 5vh;
-    margin-left: 35vw;
+  margin-top: 5vh;
+  margin-left: 35vw;
 
 }
 
 .Start-Button:hover{
-  color: black;
-  background-color: #0F7BB0;
-  border:0px;
-  box-shadow: 10px 10px 20px 3px rgba(67, 67, 67, 0.25);
+color: black;
+background-color: #0F7BB0;
+border:0px;
+box-shadow: 10px 10px 20px 3px rgba(67, 67, 67, 0.25);
 }
 .img-anim{
-    margin-left: 47vw;
-    margin-top: 12vh;
-    animation: rotation 60s infinite linear;
+  margin-left: 47vw;
+  margin-top: 12vh;
+  animation: rotation 60s infinite linear;
+  max-width: 50vw;
+  max-height: 50vw;
 }
 .text-middle{
   position: absolute;
@@ -83,19 +70,62 @@
   font-size: 34px;
   line-height: 50px;
 }
-@keyframes open-anim {
-  from {
-    width:10px
+.start-intro{
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 1.5vw;
+  text-align: center;
+  line-height: 2.5vw;
+}
+.card-intro{
+  overflow: hidden;
+  padding: 50px;
+  background: #02002400;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 20px );
+  -webkit-backdrop-filter: blur( 20px );
+  border-radius: 10px;
+  /* height: 100%;*/ 
+  width:50%;
+  animation: open-cardStart 1s linear;
+}
+.easeIntroIn{
+  background-color: white;
+  height:100%;
+  background-color:#9EC2EA;
+  width:110%;
+  z-index:1;
+  position:absolute;
+  color:black;
+  top:130%;
+  animation: animateOpacity 1s linear;
+}
+@keyframes animateOpacity {
+  from{
+    opacity: 0;
+    background-color: transparent;
   }
-  to {
-    width:700px
+  to{
+    opacity:100%;
+    background-color:#9EC2EA;
+  }
+}
+@keyframes open-cardStart {
+  from{
+    height: 0%;
+    width: 0%;
+  }
+  to{
+    height:100%;
+    width:50%;
   }
 }
 @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
+  from {
+    transform: rotate(0deg);
   }
+  to {
+    transform: rotate(359deg);
+  }
+}
