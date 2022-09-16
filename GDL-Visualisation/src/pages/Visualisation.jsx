@@ -19,8 +19,8 @@ const Test = ()=>{
         //     .attr("r", 8)
         //     .attr("fill", "red");
 
-        var noOfNeigbours = 5
-        var linkVal = []
+        // var noOfNeigbours = 5;
+        // var linkVal = [];
         var vals = []
         for (var i = 0; i < lesMis.nodes.length; i++) {
             let coords = {
@@ -31,67 +31,60 @@ const Test = ()=>{
             coords.x =  ((Math.random() * window.innerWidth) % (window.innerWidth));
             coords.y =  ((Math.random() * window.innerHeight) % window.innerHeight);
             vals.push(coords);
-            // for(var j = 0; j < noOfNeigbours; j++){
-            //     linkVal.push(i);
-            // }
-
-
-            // vals.push(Math.random() % window.innerHeight);;
-            // console.log(vals[i]);ß
         }
 
-        const circle = svg.selectAll("circle")
-            .data(vals)
-            .enter().append("circle")
-            // .attr("cy", function(d) { console.log("Y:" + d); return (((d + Math.random() * window.innerHeight) % (window.innerHeight-50)) + 50); })
-            .attr("cy", function(d) { return d.y; })
-            .attr("cx", function(d) { return d.x; })
-            .attr('fill', 'red')
-            .attr("r", 6);
 
-        //     const line = svg.append("line");
-        //     line.data(links)
-        //         .attr("x1", function(d) { 
-        //             let indexNo = -1;
-        //             for(var i=0;i<vals.length;i++){
-        //                 if(vals[i].id == d.source){
-        //                     indexNo = i;
-        //                     break;
-        //                 }
-        //             }
-        //             return vals[indexNo].x; 
-        //         })
-        //         .attr("y1", function(d) { 
-        //             let indexNo = -1;
-        //             for(var i=0;i<vals.length;i++){
-        //                 if(vals[i].id == d.source){
-        //                     indexNo = i;
-        //                     break;
-        //                 }
-        //             }
-        //             return vals[indexNo].y;  
-        //         })
-        //         .attr("x2", function(d) { 
-        //             let indexNo = -1;
-        //             for(var i=0;i<vals.length;i++){
-        //                 if(vals[i].id == d.target){
-        //                     indexNo = i;
-        //                     break;
-        //                 }
-        //             }
-        //             return vals[indexNo].x;  })
-        //         .attr("y2", function(d) { let indexNo = -1;
-        //             for(var i=0;i<vals.length;i++){
-        //                 if(vals[i].id == d.target){
-        //                     indexNo = i;
-        //                     break;
-        //                 }
-        //             }
-        //             return vals[indexNo].y; 
-        //         })
-        //         .attr("stroke", "green")
-        //         .attr("stroke-wdith", 7);
-
+            const line = svg.selectAll("line");
+            line.data(lesMis.links)
+                .enter().append('line')
+                .attr("x1", function(d) { 
+                    let indexNo = -1;
+                    for(var i=0;i<vals.length;i++){
+                        if(vals[i].id == d.source){
+                            indexNo = i;
+                            break;
+                        }
+                    }
+                    return vals[indexNo].x; 
+                })
+                .attr("y1", function(d) { 
+                    let indexNo = -1;
+                    for(var i=0;i<vals.length;i++){
+                        if(vals[i].id == d.source){
+                            indexNo = i;
+                            break;
+                        }
+                    }
+                    return vals[indexNo].y;  
+                })
+                .attr("x2", function(d) { 
+                    let indexNo = -1;
+                    for(var i=0;i<vals.length;i++){
+                        if(vals[i].id == d.target){
+                            indexNo = i;
+                            break;
+                        }
+                    }
+                    return vals[indexNo].x;  })
+                .attr("y2", function(d) { let indexNo = -1;
+                    for(var i=0;i<vals.length;i++){
+                        if(vals[i].id == d.target){
+                            indexNo = i;
+                            break;
+                        }
+                    }
+                    return vals[indexNo].y; 
+                })
+                .attr("stroke", "white")
+                .attr("stroke-wdith", 2);
+                const circle = svg.selectAll("circle")
+                .data(vals)
+                .enter().append("circle")
+                // .attr("cy", function(d) { console.log("Y:" + d); return (((d + Math.random() * window.innerHeight) % (window.innerHeight-50)) + 50); })
+                .attr("cy", function(d) { return d.y; })
+                .attr("cx", function(d) { return d.x; })
+                .attr('fill', 'cyan')
+                .attr("r", 6);
 
         // var links = [];
         // for (var i = 0; i < vals.length; i++) {
