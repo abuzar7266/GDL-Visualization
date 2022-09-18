@@ -7,13 +7,15 @@ import { useNavigate } from "react-router-dom";
 import * as d3 from 'd3';
 import { useRef } from "react";
 import { useEffect } from "react";
+<<<<<<< HEAD
 import Graph from "../component/Graph.jsx"
 import lesMis from "../assets/json/miserables.js"
+=======
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
     <Container style={{textAlign:'left'}}>
-        <div  style={{zIndex:'2', position:'absolute'}}>
+        <div  style={{zIndex:'3', position:'absolute'}}>
         <Row>
             <Col>
                 <div className="title-div">
@@ -30,6 +32,7 @@ const LandingPage = ()=>{
             </Col>
         </Row>
         </div>
+<<<<<<< HEAD
         <div  style={{zIndex:'1', position:'absolute'}} class="svg-container">
             <Row>
                 <Col>
@@ -38,12 +41,8 @@ const LandingPage = ()=>{
             </Row>
         </div>
         {/* <div>
-            <Row>
-                <Col>
-                    <img src={GraphTrans} alt="..." height='700' width='700' fluid className="img-anim"/>
-                </Col>
-            </Row>
-        </div> */}
+=======
+        <div  style={{zIndex:'2', position:'absolute'}}>
     </Container>
     {/*<div className='easeIntroIn'>
         <Container style={{textAlign:'center',marginTop:'12%'}} fluid>
