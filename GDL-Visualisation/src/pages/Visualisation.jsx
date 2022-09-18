@@ -3,126 +3,89 @@ import Navbar from '../component/navbar.jsx';
 import { useState, useEffect, useRef } from "react";
 import lesMis from '../assets/json/miserables'; 
 import * as d3 from 'd3';
+import Graph from "../component/Graph.jsx";
+import { Container,Col,Row } from "react-bootstrap";
+var data1 = {
+  nodes:[
+    {id:0},
+    {id:1},
+    {id:2},
+    {id:3},
+    {id:4}
+  ],
+  links:[
+    {source:0,target:1},
+    {source:0,target:4},
+    {source:1,target:2},
+    {source:3,target:2},
+    {source:4,target:3},
+  ]
+}
+var data2 = {
+  nodes:[
+    {id:0},
+    {id:1},
+    {id:2},
+    {id:3},
+    {id:4}
+  ],
+  links:[
+    {source:0,target:3},
+    {source:0,target:2},
+    {source:4,target:2},
+    {source:4,target:1},
+    {source:1,target:3},
+  ]
+}
+
 const Test = ()=>{
-    const graphRef = useRef();
-    useEffect(()=>{
-      var svg = d3.select("svg");
-      d3.selectAll("svg > *").remove()
-      var width = svg.attr("width");
-      var height = svg.attr("height");
-
-      var graph = {
-        nodes: [
-          { name: "Alice" },
-          { name: "Bob" },
-          { name: "Chen" },
-          { name: "Dawg" },
-          { name: "Ethan" },
-          { name: "George" },
-          { name: "Frank" },
-          { name: "Hanes" }
-        ],
-        links: [
-          { source: "Alice", target: "Bob" },
-          { source: "Chen", target: "Bob" },
-          { source: "Dawg", target: "Chen" },
-          { source: "Hanes", target: "Frank" },
-          { source: "Hanes", target: "George" },
-          { source: "Dawg", target: "Ethan" }
-        ]
-      };
-
-      var simmulation = d3
-                      .forceSimulation(lesMis.nodes)
-                      .force(
-                        "link",
-                        d3
-                          .forceLink()
-                          .id(function(d) {
-                            return d.id;
-                          })
-                          .links(lesMis.links)
-                      )
-                      .force("charge",d3.forceManyBody().strength(-50))
-                      .force("center",d3.forceCenter(width /2,height /2))
-                      .on("tick",ticked);
-      
-      var link = svg
-                  .append("g")
-                  .attr("class","links")
-                  .selectAll("line")
-                  .data(lesMis.links)
-                  .enter()
-                  .append("line")
-                  .attr("stroke-width",function(d){
-                    return 0.5;
-                  })
-                  .style("stroke","white");
-      var node = svg
-                 .append("g")
-                 .selectAll("circle")
-                 .data(lesMis.nodes)
-                 .enter()
-                 .append("circle")
-                 .attr("r",5)
-                 .attr("fill",function(d){
-                  return "cyan";
-                 })
-                 .attr("stroke","cyan")
-                 .call(
-                    d3
-                    .drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended)
-                );
-      function ticked(){
-          link
-          .attr("x1",function(d){
-            return d.source.x;
-          })
-          .attr("y1",function(d){
-            return d.source.y;
-          })
-          .attr("x2",function(d){
-            return d.target.x;
-          })
-          .attr("y2",function(d){
-            return d.target.y;
-          })
-          node
-          .attr("cx",function(d){
-            return d.x;
-          })
-          .attr("cy",function(d){
-            return d.y;
-          })
-      }
-      function dragstarted(event) {
-        if (!event.active) simmulation.alphaTarget(0.3).restart();
-        event.subject.fx = event.subject.x;
-        event.subject.fy = event.subject.y;
-        console.log(d);
-      }
-    
-      function dragged(event) {
-        event.subject.fx = event.x;
-        event.subject.fy = event.y;
-      }
-      
-      function dragended(event) {
-        if (!event.active) simmulation.alphaTarget(0);
-        event.subject.fx = null;
-        event.subject.fy = null;
-      }
-    })
-
     return (<> 
-      <div>
-        <svg height="700" width="1300">
-
-        </svg>
-      </div>
+    <Container>
+      <Row>
+        <Col
+        lg={6}
+        xl={6}
+        md={6}
+        >
+        
+        </Col>
+        <Col
+        lg={2}
+        xl={2}
+        md={2}
+        >
+        <Graph id="p1" height={70} width={200} strength={-90} data={data1}/>
+        </Col>
+        <Col
+        lg={2}
+        xl={2}
+        md={2}
+        >
+        <Graph id="p2" height={50} width={200} strength={-90} data={data2}/>
+        </Col>
+      </Row>
+      <Row
+        style={{height:'500px',width:'1150px',marginTop:'0px'}}
+      >
+        <Col
+          md={10}
+          lg={10}
+          xl={10}
+        >
+        
+        </Col>
+        <Col
+          md={2}
+          lg={2}
+          xl={2}
+        >
+          <div>
+          <Graph id="p3" height={500} width={700} strength={-30} data={lesMis}/>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+        {/*<Graph id="p2" height={700} width={700} data={data2}/>*/}
     </>)
 }
 export default Test;
