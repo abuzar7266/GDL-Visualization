@@ -1,12 +1,15 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import * as d3 from 'd3';
+import "../assets/css/Graph.css"
 const Graph = (props)=>{
     const graphRef = useRef();
     useEffect(()=>{
       var divX = d3.select("#"+props.id);
       divX.selectAll("svg > *").remove();
-      var svg = divX.append("svg").attr("height",`${props.height}`).attr("width",`${props.width}`);
+      var svg = divX.append("svg").attr("height",`${props.height}`).attr("width",`${props.width}`)
+      .attr("preserveAspectRatio", "xMinYMin meet")
+      .classed("svg-content", true);;
       var width = svg.attr("width");
       var height = svg.attr("height");
 

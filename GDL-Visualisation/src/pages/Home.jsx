@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import * as d3 from 'd3';
 import { useRef } from "react";
 import { useEffect } from "react";
+import Graph from "../component/Graph.jsx"
+import lesMis from "../assets/json/miserables.js"
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
@@ -22,19 +24,26 @@ const LandingPage = ()=>{
         </Row>
         <Row>
             <Col>
-                <div className="button-div">
+                <div className="button-div" style={{zIndex:'3'}}>
                     <button className="Start-Button" onClick={() => navigate("/intro")}>Get Started</button>
                 </div>
             </Col>
         </Row>
         </div>
-        <div>
+        <div  style={{zIndex:'1', position:'absolute'}} class="svg-container">
+            <Row>
+                <Col>
+                    <Graph id="HomeGraph" strength={-90} height={1000} width={1800} data={lesMis}/>
+                </Col>
+            </Row>
+        </div>
+        {/* <div>
             <Row>
                 <Col>
                     <img src={GraphTrans} alt="..." height='700' width='700' fluid className="img-anim"/>
                 </Col>
             </Row>
-        </div>
+        </div> */}
     </Container>
     {/*<div className='easeIntroIn'>
         <Container style={{textAlign:'center',marginTop:'12%'}} fluid>

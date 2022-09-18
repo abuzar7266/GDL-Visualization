@@ -57,9 +57,9 @@ box-shadow: 10px 10px 20px 3px rgba(67, 67, 67, 0.25);
 .img-anim{
   margin-left: 47vw;
   margin-top: 12vh;
-  animation: rotation 60s infinite linear;
-  max-width: 50vw;
-  max-height: 50vw;
+  animation: rotation 1200s infinite linear;
+  max-width: 5vw;
+  max-height: 5vw;
 }
 .text-middle{
   position: absolute;
@@ -78,6 +78,16 @@ box-shadow: 10px 10px 20px 3px rgba(67, 67, 67, 0.25);
   text-align: center;
   line-height: 2.5vw;
 }
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: top;
+  overflow: hidden;
+}
+
 .card-intro{
   overflow: hidden;
   padding: 50px;
