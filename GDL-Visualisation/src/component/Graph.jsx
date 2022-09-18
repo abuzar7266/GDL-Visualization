@@ -77,7 +77,7 @@ const Graph = (props)=>{
           })
       }
       function dragstarted(event) {
-        if (!event.active) simmulation.alphaTarget(0.3).restart();
+        if (!event.active) simmulation.alphaTarget(1).restart();
         event.subject.fx = event.subject.x;
         event.subject.fy = event.subject.y;
         console.log(d);
@@ -96,7 +96,7 @@ const Graph = (props)=>{
     })
 
     return (<> 
-      <div id={props.id}>
+      <div id={props.id} style={{marginTop:props.marginTop,marginLeft:props.marginLeft,position:props.position,zIndex:props.zIndex}}>
       </div>
     </>)
 }
