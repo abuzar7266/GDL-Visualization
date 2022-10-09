@@ -1,0 +1,18 @@
+.header{
+    font-size: 2vw;   
+    margin-left: 12vw;
+    margin-top: 5vh;
+    
+    background-color:darkslateblue;
+    padding: 1.5vw;
+    box-shadow: 10px 0 15px 15px #020024 inset;
+    color:rgb(0, 0, 0);
+}
+.card{
+    margin-top: 10vh;
+    height:60vh;
+    width:30vw;
+    margin-left: 15vw;
+    background-color:darkslateblue;
+    box-shadow: 0 0 15px 15px #020024 inset;
+}

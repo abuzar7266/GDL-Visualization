@@ -17,7 +17,7 @@ const LandingPage = ()=>{
         <Row>
             <Col>
                 <div className="title-div">
-                    <span className="title">FYP Name</span><br />
+                    <span className="title">MorphNet</span><br />
                     <span className="subtitle">Algorithmic Visualisation of Geometric Deep Learning</span>
                 </div>
             </Col>
@@ -25,7 +25,7 @@ const LandingPage = ()=>{
         <Row>
             <Col>
                 <div className="button-div">
-                    <button className="Start-Button" onClick={() => navigate("/intro")}>Get Started</button>
+                    <button className="Start-Button" onClick={() => navigate("/vis")}>Get Started</button>
                 </div>
             </Col>
         </Row>

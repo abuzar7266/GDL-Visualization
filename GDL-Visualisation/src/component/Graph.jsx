@@ -80,18 +80,20 @@ const Graph = (props)=>{
         if (!event.active) simmulation.alphaTarget(1).restart();
         event.subject.fx = event.subject.x;
         event.subject.fy = event.subject.y;
-        console.log(d);
+        console.log(event);
       }
     
       function dragged(event) {
         event.subject.fx = event.x;
         event.subject.fy = event.y;
+        console.log(event);
       }
       
       function dragended(event) {
         if (!event.active) simmulation.alphaTarget(0);
         event.subject.fx = null;
         event.subject.fy = null;
+        console.log(event);
       }
     })
 
