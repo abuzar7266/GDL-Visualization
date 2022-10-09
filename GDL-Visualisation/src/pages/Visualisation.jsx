@@ -70,7 +70,7 @@ const Test = ()=>{
       <Row style={{marginTop:'100px'}}>
       <Container style={{height:'700px',width:'1200px'}}>
         <Row>
-            <Graph id="p1" height={500} width={800} strength={-40} position="absolute" zIndex="2" data={lesMis}/>
+            <Graph id="p1" height={900} width={1000} strength={-40} data={lesMis}/>
         </Row>
         <Row
         style={{marginLeft:'100px'}}
@@ -88,7 +88,7 @@ const Test = ()=>{
         </Row>
       </Container>
       </Row>
-      <Row>
+      {/* <Row>
       <Container style={{height:'700px',width:'1200px'}}>
         <Row>
             <Col
@@ -168,7 +168,7 @@ const Test = ()=>{
             </Col>
         </Row>
       </Container>
-      </Row>
+      </Row> */}
     </Container>
     </>)
 }

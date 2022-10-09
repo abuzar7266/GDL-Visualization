@@ -101,7 +101,7 @@ const Graph = (props)=>{
     })
 
     return (<> 
-      <div id={props.id} style={{marginTop:props.marginTop,marginLeft:props.marginLeft,position:props.position,zIndex:props.zIndex}}>
+      <div id={props.id} style={{marginTop:props.marginTop,position:props.position,zIndex:props.zIndex}}>
       </div>
     </>)
 }
