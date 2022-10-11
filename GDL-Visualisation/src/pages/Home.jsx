@@ -20,7 +20,7 @@ const LandingPage = ()=>{
         <Row>
             <Col>
                 <div className="button-div" style={{zIndex:'3'}}>
-                    <button className="Start-Button" onClick={() => navigate("/intro")}>Get Started</button>
+                    <button className="Start-Button" onClick={() => navigate("/vis")}>Get Started</button>
                 </div>
             </Col>
         </Row>
