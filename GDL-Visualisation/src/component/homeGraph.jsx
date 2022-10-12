@@ -35,7 +35,7 @@ const Graph = (props)=>{
                   .enter()
                   .append("line")
                   .attr("stroke-width",function(d){
-                    return 1;
+                    return 0.7;
                   })
                   .attr("stroke-linecap", "round")
                   .style("stroke","#6C3967");
@@ -45,11 +45,14 @@ const Graph = (props)=>{
                  .data(props.data.nodes)
                  .enter()
                  .append("circle")
-                 .attr("r",7)
+                 .attr("r",10)
                  .attr("fill",function(d){
                   return "#E66335";
                  })
                  .attr("stroke","#222B38")
+                 .attr("stroke-width",function(d){
+                  return 0.5;
+                })
                  .call(
                     d3
                     .drag()

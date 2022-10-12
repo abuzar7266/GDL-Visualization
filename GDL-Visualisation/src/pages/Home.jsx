@@ -28,7 +28,7 @@ const LandingPage = ()=>{
         <div  style={{zIndex:'1', position:'absolute'}} className="svg-content">
             <Row>
                 <Col>
-                    <Graph id="HomeGraph" strength={-150} height={1000} width={1800} data={lesMis}/>
+                    <Graph id="HomeGraph" strength={-80} height={800} width={1800} data={lesMis}/>
                 </Col>
             </Row>
         </div>
