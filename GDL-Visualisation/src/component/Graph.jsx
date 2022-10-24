@@ -5,7 +5,7 @@ import '../assets/css/Graph.css'
 const Graph = (props)=>{
     useEffect(()=>{
       var divX = d3.select("#"+props.id);
-      divX.selectAll("svg > *").remove();
+      divX.selectAll('svg').remove();
       var svg = divX.append("svg").attr("height",`${props.height}`).attr("width",`${props.width}`)
       .attr("preserveAspectRatio", "xMinYMin meet")
       .classed("graph", true);
@@ -34,10 +34,17 @@ const Graph = (props)=>{
                   .enter()
                   .append("line")
                   .attr("stroke-width",function(d){
-                    return 1;
+                    return 2;
                   })
                   .attr("stroke-linecap", "round")
-                  .style("stroke","#6C3967");
+                  .style("stroke",function(d){
+                    if(d.color==0){
+                      return "gray";
+                    }
+                    else{
+                      return 'red'
+                    }
+                   });
       var node = svg
                  .append("g")
                  .selectAll("circle")
@@ -46,7 +53,15 @@ const Graph = (props)=>{
                  .append("circle")
                  .attr("r",7)
                  .attr("fill",function(d){
-                  return "#E66335";
+                  if(d.color==0){
+                    return "blue";
+                  }
+                  else if (d.color==1){
+                    return "yellow";
+                  }
+                  else{
+                    return 'lightblue'
+                  }
                  })
                  .attr("stroke","#222B38")
                  .call(
@@ -100,7 +115,7 @@ const Graph = (props)=>{
     })
 
     return (<> 
-      <div id={props.id} style={{marginTop:props.marginTop,position:props.position,zIndex:props.zIndex}}>
+      <div id={props.id} style={{marginLeft:'50vw',marginTop:props.marginTop,position:props.position,zIndex:props.zIndex}}>
       </div>
     </>)
 }

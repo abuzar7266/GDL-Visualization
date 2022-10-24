@@ -4,9 +4,13 @@ import '../assets/css/Home.css';
 import { useNavigate } from "react-router-dom";
 import Graph from "../component/homeGraph.jsx"
 import lesMis from "../assets/json/miserables.js"
+import MyNavbar from "../component/navbar.jsx"
+
+
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
+    <MyNavbar style={{}}/>
     <Container style={{textAlign:'left'}}>
         <div  style={{zIndex:'3', position:'absolute'}}>
         <Row>
