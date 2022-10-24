@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@material-ui/icons": "^4.11.3",
     "bootstrap": "^5.2.0",
     "d3-force": "^3.0.0",
     "react-bootstrap": "^2.5.0"

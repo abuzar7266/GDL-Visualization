@@ -6,7 +6,6 @@ import Graph from "../component/homeGraph.jsx"
 import lesMis from "../assets/json/miserables.js"
 import MyNavbar from "../component/navbar.jsx"
 
-
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
@@ -16,8 +15,8 @@ const LandingPage = ()=>{
         <Row>
             <Col>
                 <div className="title-div">
-                    <span className="title">FYP Name</span><br />
-                    <span className="subtitle">Algorithmic Visualisation of Geometric Deep Learning</span>
+                    <span className="title">MorphNet</span><br />
+                    <span className="subtitle">Visualisation for novel mechanism of deep learning over non-euclidean data </span>
                 </div>
             </Col>
         </Row>
