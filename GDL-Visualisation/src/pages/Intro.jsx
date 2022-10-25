@@ -29,7 +29,7 @@ const Introduction = ()=>{
             }
             setLocal(0);
         }
-    })
+    },[numVis,count,iCount])
     return (<>
         <LandingGraph/>
         {

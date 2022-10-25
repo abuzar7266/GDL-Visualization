@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { KeyboardArrowDownTwoTone } from "@material-ui/icons";
 import { KeyboardArrowUpTwoTone } from "@material-ui/icons";
+import neuralVis from '../assets/json/neuralVis.json';
 import '../assets/css/vis-anima.css';
 var data1 = {
   nodes:[
@@ -66,6 +67,11 @@ var data3 = {
   ]
 }
 const Test = ()=>{
+  const [data,setData] = useState(network);
+  const [count,setCount] = useState(0);
+  const [state,setState] = useState(0);
+  const [local,setLocal] = useState(0);
+  const [iCount,setiCount] = useState(0);
   const [graph1,setGraph1] = useState(JSON.parse(JSON.stringify(lesMis)));
   const [stateGet,setStateGet] = useState(0);
   const [numVis,setNumVis] = useState(0);
@@ -86,7 +92,7 @@ const Test = ()=>{
         })
     }
   },[])
-    useEffect(()=>{
+  useEffect(()=>{
             console.log('Dum UseEffect called');
             if(stateGet==1){
               if(numVis==0){
@@ -137,6 +143,30 @@ const Test = ()=>{
               }
       }
     },[numVis,stateGet,graph1])
+    useEffect(()=>{
+      console.log('Called NNN');
+      if(numVis==1){
+        setLocal(local+1);
+        if(local==10){
+                  if(count==0){
+                      setData(neuralVis[`${(count+1)}`]);
+                      setCount(count+1);
+                      setiCount(iCount+1);
+                      setState(1);
+                  }
+                else if(count<19){
+                    setData(neuralVis[`${(count+1)}`]);
+                    setCount(count+1);
+                }
+                else if(iCount<2){
+                    setCount(0);
+                }else{
+                  setNumVis(2);
+                }
+                setLocal(0);
+            }
+        }
+    },[numVis,local])
     const handlePrev = ()=>{
       setNumVis(numVis-1);
     }
@@ -184,7 +214,7 @@ const Test = ()=>{
               { numVis==1 && <div className="div-move">
                 <Row>
                   <Col>
-                    <NNN id="p1" height={700} width={900} marginLeft="40%" position="absolute" marginTop="6%" zIndex="2" data={network}/>
+                    <NNN id="p1" height={700} width={900} marginLeft="40%" position="absolute" marginTop="6%" zIndex="2" data={data}/>
                     {/*<NNN id="p1" height={700} width={900} marginLeft="40%" marginTop="6%" position="absolute" zIndex="2" data={network}/>*/}
                   </Col>
                 </Row>
