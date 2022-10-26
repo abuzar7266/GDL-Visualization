@@ -1,9 +1,8 @@
 import React from "react";
 import Navbar from '../component/navbar.jsx';
 import LandingGraph from "../component/LandingPageGraph.jsx";
-import Graph from "../component/neural network";
-import graph1 from '../assets/json/neuralNetwork';
-import neuralVis from '../assets/json/neuralVis.json';
+import Graph from "../component/MLTreeGraph";
+import tree from '../assets/json/tree.json';
 import { useEffect,useState } from "react";
 const Introduction = ()=>{
     const [data,setData] = useState({});
@@ -13,15 +12,17 @@ const Introduction = ()=>{
     const [iCount,setiCount] = useState(0);
     useEffect(()=>{
         setLocal(local+1);
-        if(local==1000){
+        if(local==2000){
             if(count==0){
-                setData(neuralVis[`${(count+1)}`]);
+                setData(tree[`${(count+1)}`]);
+                console.log(tree[`${(count+1)}`]);
                 setCount(count+1);
                 setiCount(iCount+1);
                 setState(1);
             }
-            else if(count<19){
-                setData(neuralVis[`${(count+1)}`]);
+            else if(count<11){
+                console.log(count,tree[`${(count+1)}`])
+                setData(tree[`${(count+1)}`]);
                 setCount(count+1);
             }
             else if(iCount<2){
@@ -29,11 +30,11 @@ const Introduction = ()=>{
             }
             setLocal(0);
         }
-    },[numVis,count,iCount])
+    })
     return (<>
         <LandingGraph/>
         {
-            state==1 && (<Graph id="p1" height={700} width={900} marginLeft="40%" marginTop="2%" iCount={iCount}position="absolute" zIndex="2" data={data}/>)
+            state==1 && (<Graph id="p3" height={500} width={700} strength={-70} position="absolute" iCount={0} zIndex="2" data={data}/>)
         }
     </>)
 }

@@ -26,6 +26,7 @@ const Graph = (props)=>{
                       .force("charge",d3.forceManyBody().strength(props.strength))
                       .force("center",d3.forceCenter(width /2,height /2))
                       .on("tick",ticked);
+      
       var link = svg
                   .append("g")
                   .attr("class","links")

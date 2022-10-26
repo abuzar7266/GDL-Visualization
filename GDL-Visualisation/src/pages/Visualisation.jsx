@@ -2,7 +2,9 @@ import React from "react";
 import lesMis from '../assets/json/graph.js'; 
 import Graph from "../component/Graph.jsx";
 import network from "../assets/json/neuralNetwork.js";
-import NNN from '../component/neural network'
+import NNN from '../component/neural network';
+import MLTree from '../component/MLTreeGraph';
+import tree from '../assets/json/tree.json'
 import { Container,Col,Row } from "react-bootstrap";
 import axios from 'axios'
 import { useEffect } from "react";
@@ -67,6 +69,8 @@ var data3 = {
   ]
 }
 const Test = ()=>{
+  const [dataV3,setDataV3] = useState(tree[`${(1)}`]);
+  const [stateV3,setStateV3] = useState(0)
   const [data,setData] = useState(network);
   const [count,setCount] = useState(0);
   const [state,setState] = useState(0);
@@ -92,6 +96,27 @@ const Test = ()=>{
         })
     }
   },[])
+  useEffect(()=>{
+    if(numVis==2){
+        setLocal(local+1);
+        if(local==100){
+            if(count==0){
+                setDataV3(tree[`${(count+1)}`]);
+                setCount(count+1);
+                setStateV3(1);
+            }
+            else if(count<11){
+                console.log(count,tree[`${(count+1)}`])
+                setDataV3(tree[`${(count+1)}`]);
+                setCount(count+1);
+            }
+            else if(iCount<2){
+                setCount(0);
+            }
+            setLocal(0);
+        }
+      }
+  },[dataV3,local])
   useEffect(()=>{
             console.log('Dum UseEffect called');
             if(stateGet==1){
@@ -162,11 +187,12 @@ const Test = ()=>{
                     setCount(0);
                 }else{
                   setNumVis(2);
+                  setCount(0);
                 }
                 setLocal(0);
             }
         }
-    },[numVis,local])
+    },[numVis,dataV3,local])
     const handlePrev = ()=>{
       setNumVis(numVis-1);
     }
@@ -233,6 +259,34 @@ const Test = ()=>{
                     >
                         <h3 style={{color:'black',opacity:'100%'}}>
                           Deep Neural Network
+                        </h3>
+                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. Donec gravida tellus ac volutpat gravida. Suspendisse ultrices leo ac vehicula sodales. Mauris accumsan magna nec tellus iaculis bibendum. Nunc ut placerat turpis, sed accumsan eros. Suspendisse volutpat erat nibh, vel interdum mi aliquet in. Pellentesque eu tincidunt tortor, nec mollis dolor.</p>
+                    </Col>
+                </Row>    
+                </div>   
+              </div>
+      }
+      { numVis==2 && <div className="div-move">
+                <Row>
+                  <Col>
+                    <MLTree id="p3" height={500} width={700} strength={-70} marginLeft="55vw" marginTop="10vh" position="absolute" iCount={0} zIndex="2" data={dataV3}/>
+                  </Col>
+                </Row>
+                <Row>
+                  <div style={{height:'75vh',width:'100vw',zIndex:'4',position:'absolute',background:'black',opacity:'20%'}}>
+
+                  </div>
+                </Row>
+                <div style={{height:"auto", width:'auto',marginTop:'8%'}}>
+                <Row>
+                    <Col
+                    md={5}
+                    lg={5}
+                    xl={5}
+                    style={{marginLeft:'10vw'}}
+                    >
+                        <h3 style={{color:'black',opacity:'100%'}}>
+                          Machine Learning
                         </h3>
                         <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. Donec gravida tellus ac volutpat gravida. Suspendisse ultrices leo ac vehicula sodales. Mauris accumsan magna nec tellus iaculis bibendum. Nunc ut placerat turpis, sed accumsan eros. Suspendisse volutpat erat nibh, vel interdum mi aliquet in. Pellentesque eu tincidunt tortor, nec mollis dolor.</p>
                     </Col>
