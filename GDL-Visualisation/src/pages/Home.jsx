@@ -9,7 +9,7 @@ import MyNavbar from "../component/navbar.jsx"
 const LandingPage = ()=>{
     const navigate = useNavigate();
     return (<>
-    <MyNavbar style={{}}/>
+    {/* <MyNavbar style={{}}/> */}
     <Container style={{textAlign:'left'}}>
         <div  style={{zIndex:'3', position:'absolute'}}>
         <Row>
