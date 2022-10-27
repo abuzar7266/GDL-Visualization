@@ -1,15 +1,14 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import * as d3 from 'd3';
-import "../assets/css/Graph.css"
+import '../assets/css/Graph.css'
 const Graph = (props)=>{
-    const graphRef = useRef();
     useEffect(()=>{
       var divX = d3.select("#"+props.id);
-      divX.selectAll("svg > *").remove();
+      divX.selectAll('svg').remove();
       var svg = divX.append("svg").attr("height",`${props.height}`).attr("width",`${props.width}`)
       .attr("preserveAspectRatio", "xMinYMin meet")
-      .classed("svg-content", true);;
+      .classed("graph", true);
       var width = svg.attr("width");
       var height = svg.attr("height");
 
@@ -27,6 +26,7 @@ const Graph = (props)=>{
                       .force("charge",d3.forceManyBody().strength(props.strength))
                       .force("center",d3.forceCenter(width /2,height /2))
                       .on("tick",ticked);
+      
       var link = svg
                   .append("g")
                   .attr("class","links")
@@ -35,21 +35,36 @@ const Graph = (props)=>{
                   .enter()
                   .append("line")
                   .attr("stroke-width",function(d){
-                    return 0.5;
+                    return 2;
                   })
                   .attr("stroke-linecap", "round")
-                  .style("stroke","white");
+                  .style("stroke",function(d){
+                    if(d.color==0){
+                      return "gray";
+                    }
+                    else{
+                      return 'red'
+                    }
+                   });
       var node = svg
                  .append("g")
                  .selectAll("circle")
                  .data(props.data.nodes)
                  .enter()
                  .append("circle")
-                 .attr("r",5)
+                 .attr("r",7)
                  .attr("fill",function(d){
-                  return "cyan";
+                  if(d.color==0){
+                    return "blue";
+                  }
+                  else if (d.color==1){
+                    return "yellow";
+                  }
+                  else{
+                    return 'lightblue'
+                  }
                  })
-                 .attr("stroke","cyan")
+                 .attr("stroke","#222B38")
                  .call(
                     d3
                     .drag()
@@ -83,23 +98,25 @@ const Graph = (props)=>{
         if (!event.active) simmulation.alphaTarget(1).restart();
         event.subject.fx = event.subject.x;
         event.subject.fy = event.subject.y;
-        console.log(d);
+        console.log(event);
       }
     
       function dragged(event) {
         event.subject.fx = event.x;
         event.subject.fy = event.y;
+        console.log(event);
       }
       
       function dragended(event) {
         if (!event.active) simmulation.alphaTarget(0);
         event.subject.fx = null;
         event.subject.fy = null;
+        console.log(event);
       }
     })
 
     return (<> 
-      <div id={props.id} style={{marginTop:props.marginTop,marginLeft:props.marginLeft,position:props.position,zIndex:props.zIndex}}>
+      <div id={props.id} style={{marginLeft:'50vw',marginTop:'5vh',position:props.position,zIndex:props.zIndex}}>
       </div>
     </>)
 }

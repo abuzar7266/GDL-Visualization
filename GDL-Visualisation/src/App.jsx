@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Visualisation from './pages/Visualisation'
 import Intro from './pages/Intro'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Input_Base from './pages/SpecGraphGNN.jsx';
 class App extends Component{
     render()
     {
@@ -15,6 +16,7 @@ class App extends Component{
           <Route path='/' element={<Home/>}/>
           <Route path='/intro' element={<Intro/>}/>
           <Route path='/vis' element={<Visualisation/>}/>
+          <Route path='/simulate' element={<Input_Base/>}/>
         </Routes>
       </BrowserRouter>
     </div>
