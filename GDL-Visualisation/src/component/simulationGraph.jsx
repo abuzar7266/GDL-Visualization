@@ -1,7 +1,11 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import * as d3 from 'd3';
-import "../assets/css/Graph.css"
+import "../assets/css/Graph.css";
+var coord = {
+  fx:0,
+  fy:0
+}
 const Graph = (props)=>{
     const graphRef = useRef();
     useEffect(()=>{
@@ -46,7 +50,7 @@ const Graph = (props)=>{
       var circle = node
                  .append("circle")
                  .attr("r",function(d){
-                  return 5;
+                  return 10;
                  })
                  .attr("fill",function(d){
                   return "#E66335";
@@ -84,17 +88,25 @@ const Graph = (props)=>{
           })
           circle
           .attr("cx",function(d){
-            return d.x;
+            if(d.x>50 && d.x<800){
+              return d.x;
+            }
           })
           .attr("cy",function(d){
-            return d.y;
+            if(d.y>10 && d.y<400){
+              return d.y;
+            }
           })
           lables
           .attr("dx",function(d){
-            return d.x;
+            if(d.x>50 && d.x<800){
+              return d.x;
+            }
           })
           .attr("dy",function(d){
-            return d.y;
+            if(d.y>10 && d.y<400){
+              return d.y;
+            }
           })
       }
       function dragstarted(event) {
@@ -112,7 +124,7 @@ const Graph = (props)=>{
       
       function dragended(event) {
         console.log(event);
-        if (!event.active) simmulation.alphaTarget(1).restart();
+        if (!event.active) simmulation.alphaTarget(0).restart();
         event.subject.fx = null;
         event.subject.fy = null;
       }

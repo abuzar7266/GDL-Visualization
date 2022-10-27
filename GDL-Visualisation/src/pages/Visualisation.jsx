@@ -97,7 +97,7 @@ const Test = ()=>{
           setStateGet(1)
         })
     }
-  },[])
+  },[stateGet,setStateGet])
   useEffect(()=>{
     if(numVis==2){
         setLocal(local+1);
@@ -197,11 +197,61 @@ const Test = ()=>{
                 setLocal(0);
             }
         }
-    },[numVis,local])
+    },[numVis,local,data,setData])
     const handlePrev = ()=>{
+      if(numVis-1==0){
+        setGraph1(JSON.parse(JSON.stringify(lesMis)))
+        setCount(0)
+        setStateGet(0);
+        setIter({
+          source:0,
+          count:-1,
+          length:-1
+        })
+      }
+      if(numVis-1==1){
+        setCount(0);
+        setiCount(0);
+        setData(neuralVis[`${(1)}`]);
+        setLocal(0);
+      }
+      if(numVis-1==2){
+        setCount(0);
+        setiCount(0);
+        setData(neuralVis[`${(1)}`]);
+        setLocal(0);
+      }
+      if(numVis-1==3){
+
+      }
       setNumVis(numVis-1);
     }
     const handleNext = ()=>{
+      if(numVis+1==0){
+        setGraph1(JSON.parse(JSON.stringify(lesMis)))
+        setCount(0)
+        setStateGet(0);
+        setIter({
+          source:0,
+          count:-1,
+          length:-1
+        })
+      }
+      if(numVis+1==1){
+        setCount(0);
+        setiCount(0);
+        setData(neuralVis[`${(1)}`]);
+        setLocal(0);
+      }
+      if(numVis+1==2){
+        setCount(0);
+        setiCount(0);
+        setData(neuralVis[`${(1)}`]);
+        setLocal(0);
+      }
+      if(numVis+1==3){
+
+      }
       setNumVis(numVis+1);
     }
     return (<>
@@ -209,7 +259,7 @@ const Test = ()=>{
       <Row>
       <Container style={{height:'auto',width:'1700px',backgroundColor:'#A1ADC5',marginRight:'0'}} fluid>
       <Row>
-          <button style={{height:"12.5vh", width:'100vw',background:'black',opacity:'30%',marginTop:'2h',marginLeft:'0px',cusror:'pointer',color:'white',borderRadius:'0'}} onClick={handlePrev}>
+          <button style={{height:"12.5vh", width:'100vw',background:'#222B38',opacity:'90%',marginTop:'2h',marginLeft:'0px',cusror:'pointer',color:'white',borderRadius:'0'}} onClick={handlePrev}>
             <KeyboardArrowUpTwoTone style={{fontSize:'70px'}}/>
           </button>
       </Row>
@@ -225,7 +275,7 @@ const Test = ()=>{
 
                 </div>
               </Row>
-              <div style={{height:"auto", width:'auto',marginTop:'8%'}}>
+              <div style={{height:"44.2vh", width:'auto',marginTop:'8%'}}>
               <Row>
                   <Col
                   md={5}
@@ -234,9 +284,9 @@ const Test = ()=>{
                   style={{marginLeft:'10vw'}}
                   >
                       <h3 style={{color:'black',opacity:'100%'}}>
-                        Deep Learning
+                        Geometric Deep Learning
                       </h3>
-                      <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. Donec gravida tellus ac volutpat gravida. Suspendisse ultrices leo ac vehicula sodales. Mauris accumsan magna nec tellus iaculis bibendum. Nunc ut placerat turpis, sed accumsan eros. Suspendisse volutpat erat nibh, vel interdum mi aliquet in. Pellentesque eu tincidunt tortor, nec mollis dolor.</p>
+                      <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Geometric deep learning (GDL) is based on neural network architectures that incorporate and process symmetry information. GDL bears promise for molecular modelling applications that rely on molecular representations with different symmetry properties and levels of abstraction.</p>
                   </Col>
               </Row>    
               </div>   
@@ -254,7 +304,7 @@ const Test = ()=>{
 
                   </div>
                 </Row>
-                <div style={{height:"auto", width:'auto',marginTop:'8%'}}>
+                <div style={{height:"44.2vh", width:'auto',marginTop:'8%'}}>
                 <Row>
                     <Col
                     md={5}
@@ -263,9 +313,9 @@ const Test = ()=>{
                     style={{marginLeft:'10vw'}}
                     >
                         <h3 style={{color:'black',opacity:'100%'}}>
-                          Deep Neural Network
+                          Neural Networks
                         </h3>
-                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. Donec gravida tellus ac volutpat gravida. Suspendisse ultrices leo ac vehicula sodales. Mauris accumsan magna nec tellus iaculis bibendum. Nunc ut placerat turpis, sed accumsan eros. Suspendisse volutpat erat nibh, vel interdum mi aliquet in. Pellentesque eu tincidunt tortor, nec mollis dolor.</p>
+                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Neural networks, also known as artificial neural networks (ANNs) or simulated neural networks (SNNs), are a subset of machine learning and are at the heart of deep learning algorithms. Their name and structure are inspired by the human brain, mimicking the way that biological neurons signal to one another.</p>
                     </Col>
                 </Row>    
                 </div>   
@@ -282,7 +332,7 @@ const Test = ()=>{
 
                   </div>
                 </Row>
-                <div style={{height:"auto", width:'auto',marginTop:'8%'}}>
+                <div style={{height:"44.2vh", width:'auto',marginTop:'8%'}}>
                 <Row>
                     <Col
                     md={5}
@@ -293,7 +343,7 @@ const Test = ()=>{
                         <h3 style={{color:'black',opacity:'100%'}}>
                           Machine Learning
                         </h3>
-                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. Donec gravida tellus ac volutpat gravida. Suspendisse ultrices leo ac vehicula sodales. Mauris accumsan magna nec tellus iaculis bibendum. Nunc ut placerat turpis, sed accumsan eros. Suspendisse volutpat erat nibh, vel interdum mi aliquet in. Pellentesque eu tincidunt tortor, nec mollis dolor.</p>
+                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Machine Learning is a field that intersects statistical, probabilistic, computer science and algorithmic aspects arising from learning iteratively from data and finding hidden insights which can be used to build intelligent applications.</p>
                     </Col>
                 </Row>    
                 </div>   
@@ -310,7 +360,7 @@ const Test = ()=>{
 
                   </div>
                 </Row>
-                <div style={{height:"44.2vh", width:'auto',marginTop:'8%'}}>
+                <div style={{height:"50.3vh", width:'auto',marginTop:'5%'}}>
                 <Row>
                     <Col
                     md={10}
@@ -321,14 +371,14 @@ const Test = ()=>{
                         <h3 style={{color:'black',opacity:'100%'}}>
                           Convolution Neural Network
                         </h3>
-                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. </p>
+                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>A Convolutional Neural Network (ConvNet/CNN) is a Deep Learning algorithm which can take in an input image, assign importance (learnable weights and biases) to various aspects/objects in the image and be able to differentiate one from the other. The pre-processing required in a ConvNet is much lower as compared to other classification algorithms. While in primitive methods filters are hand-engineered, with enough training, ConvNets have the ability to learn these filters/characteristics. </p>
                     </Col>
                 </Row>    
                 </div>   
               </div>
       }
           <Row>
-          <button style={{height:"14vh", width:'100vw',background:'black',opacity:'30%',marginTop:'14.5vh',marginLeft:'0px',cusror:'pointer',color:'white',borderRadius:'0'}} onClick={handleNext}>
+          <button style={{height:"14vh", width:'100vw',background:'#222B38',opacity:'80%',marginTop:'14.5vh',marginLeft:'0px',cusror:'pointer',color:'white',borderRadius:'0'}} onClick={handleNext}>
             <KeyboardArrowDownTwoTone style={{fontSize:'70px'}}/>
           </button>
           </Row>

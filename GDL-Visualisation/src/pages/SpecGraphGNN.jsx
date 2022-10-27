@@ -1,7 +1,9 @@
+import { axisBottom } from "d3";
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { Container,Col,Row } from "react-bootstrap";
 import "../assets/css/specGraph.css";
+import "../assets/css/Home.css"
 import Simulate from '../component/simulationGraph';
 const Input_Base = ()=>{
     const [count,setCount] = useState(0);
@@ -63,9 +65,19 @@ const Input_Base = ()=>{
     useEffect(()=>{
         console.log(graph);
     })
+    const handleSubmitSimulate = ()=>{
+        //Add fetch post get command to send data to api that will apply format structuring and will apply bfs
+        //formated data.
+        console.log('Apply Algorithm: ',graph)
+    }
     return (<>
         <Container>
-            <Row className="center" style={{marginTop:"100px",position:'absolute',zIndex:'5'}}>
+            <Row style={{position:'absolute',zIndex:'2'}}>
+                <div style={{marginTop:'20px',background:'#222B38',color:'white',height:'60px',width:'500px',marginLeft:'100%',borderRadius:'20px'}}>
+                    <h1 style={{padding:'10px',paddingTop:'12px',opacity:'50%'}}>Simulate Graph Model</h1>
+                </div>
+            </Row>
+            <Row className="center" style={{marginTop:"100px",marginLeft:'10px',position:'absolute',zIndex:'5'}}>
                 <Col
                 md={8}
                 lg={8}
@@ -74,42 +86,58 @@ const Input_Base = ()=>{
                 { state==0 && <div>
                     <Row className="center">
                         <Col
-                        md={12}
-                        lg={12}
-                        sm={12}
+                        md={5}
+                        lg={5}
+                        sm={5}
                         >
-                        <button onClick={changeToAddNode} style={{height:'50px',width:'100px',color:'black',background:'orange'}}>Add Node</button>
+                        <button onClick={changeToAddNode} className="Start-Button" style={{borderRadius:'10px 10px 10px 10px'}}>Add Node</button>
                         </Col>
                         <Col
-                        md={12}
-                        lg={12}
-                        sm={12}
+                        md={5}
+                        lg={5}
+                        sm={5}
                         >
-                            <button onClick={changeToAddEdge} style={{height:'50px',width:'100px',color:'black',background:'orange',marginTop:'20px'}}>Add Edge</button>
+                            <button onClick={changeToAddEdge} className="Start-Button" style={{marginLeft:'70px',borderRadius:'10px 10px 10px 10px'}}>Add Edge</button>
                         </Col>
-                </Row></div>}
+                </Row>
+                <Row className="row center">
+                        <Col
+                        md={5}
+                        lg={5}
+                        sm={5}
+                        >
+                        <button onClick={handleSubmitSimulate} className="Start-Button" style={{marginTop:'10px',marginLeft:'90px',borderRadius:'10px 10px 10px 10px'}}>Simulate</button>
+                        </Col>
+                </Row>
+                </div>}
                 { state==1 && <div>
-                        <div className="card" style={{background:'gray',border:'0',width:'17vw'}}>
+                        <div className="card" style={{background:'#222B38',border:'0',width:'17vw'}}>
+                            <div className="card-header center" style={{paddingTop:'20px'}}>
+                                <h4 style={{color:'white',padding:'1px',paddingTop:'3px',opacity:'50%'}}>Add New Node</h4>
+                            </div>
                             <div className="card-body">
-                                <input type="text" name="nodeName" onChange={handleAddNodeName} style={{height:'40px',width:'250px',borderRadius:'10px',background:'white',color:'gray',border:'1px solid gray',fontSize:'12px',paddingLeft:'10px'}} placeholder="Node Name"/> <br />
-                                <input type="text" name="nodeVal" onChange={handleAddNodeVal} style={{marginTop:'10px',height:'40px',width:'250px',borderRadius:'10px',background:'white',color:'gray',border:'1px solid gray',fontSize:'12px',paddingLeft:'10px'}} placeholder="Node Value"/> <br />
-                                <button onClick={handleSubmitNode} style={{marginTop:'10px',height:'40px',width:'120px',color:'black',background:'orange'}}>Add Node</button>
+                                <input type="text" name="nodeName" onChange={handleAddNodeName} className="input-add" placeholder="Node Name"/> <br />
+                                <input type="text" name="nodeVal" onChange={handleAddNodeVal} className="input-add" placeholder="Node Value" style={{marginTop:'10px'}}/> <br />
+                                <button onClick={handleSubmitNode} className="btn-add" style={{marginTop:'10px'}} >Add Node</button>
                             </div>
                         </div>
                     </div>}
                 { state==2 && <div>
-                        <div className="card" style={{background:'gray',border:'0',width:'17vw'}}>
+                        <div className="card" style={{background:'#222B38',border:'0',width:'17vw'}}>
+                            <div className="card-header center">
+                            <h4 style={{color:'white',padding:'1px',paddingTop:'3px',opacity:'50%'}}>Add New Edge</h4>
+                            </div>
                             <div className="card-body">
-                                <input type="text" name="node1" onChange={handleAddN1} style={{height:'40px',width:'250px',borderRadius:'10px',background:'white',color:'gray',border:'1px solid gray'}}/>
-                                <input type="text" name="node2" onChange={handleAddN2} style={{marginTop:'10px',height:'40px',width:'250px',borderRadius:'10px',background:'white',color:'gray',border:'1px solid gray'}}/>
-                                <button onClick={handleSubmitEdge} style={{marginTop:"10px",height:'40px',width:'120px',color:'black',background:'orange'}}>Add Edge</button>
+                                <input type="text" name="node1" onChange={handleAddN1} className="input-add" placeholder="First Node Name"/>
+                                <input type="text" name="node2" onChange={handleAddN2} className="input-add" style={{marginTop:'10px'}} placeholder="Second Node Name"/>
+                                <button onClick={handleSubmitEdge} className="btn-add" style={{marginTop:'10px'}} >Add Edge</button>
                             </div>
                         </div>
                     </div>}
                 </Col>
             </Row>
             <Row>
-                {(state2==1 && <Simulate id="p1" height={50} width={50} strength={-50} data={graph}/>)}
+                {(state2==1 && <Simulate id="p1" height={100} width={100} strength={-100} data={graph}/>)}
             </Row>
         </Container>
     </>)
