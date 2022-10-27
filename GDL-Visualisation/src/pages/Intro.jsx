@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from '../component/navbar.jsx';
 import LandingGraph from "../component/LandingPageGraph.jsx";
-import Graph from "../component/MLTreeGraph";
-import tree from '../assets/json/tree.json';
+import Graph from "../component/convNet";
+import tree from '../assets/json/convNet.json';
 import { useEffect,useState } from "react";
 const Introduction = ()=>{
     const [data,setData] = useState({});
@@ -20,7 +20,7 @@ const Introduction = ()=>{
                 setiCount(iCount+1);
                 setState(1);
             }
-            else if(count<11){
+            else if(count<1){
                 console.log(count,tree[`${(count+1)}`])
                 setData(tree[`${(count+1)}`]);
                 setCount(count+1);
@@ -34,7 +34,7 @@ const Introduction = ()=>{
     return (<>
         <LandingGraph/>
         {
-            state==1 && (<Graph id="p3" height={500} width={700} strength={-70} position="absolute" iCount={0} zIndex="2" data={data}/>)
+            state==1 && (<Graph id="p3" height={500} width={1200} strength={-70} position="absolute" iCount={0} zIndex="2" data={data}/>)
         }
     </>)
 }

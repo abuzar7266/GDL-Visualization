@@ -12,6 +12,8 @@ import { useState } from "react";
 import { KeyboardArrowDownTwoTone } from "@material-ui/icons";
 import { KeyboardArrowUpTwoTone } from "@material-ui/icons";
 import neuralVis from '../assets/json/neuralVis.json';
+import convNet from '../assets/json/convNet.json';
+import ConvNet from '../component/convNet';
 import '../assets/css/vis-anima.css';
 var data1 = {
   nodes:[
@@ -99,7 +101,7 @@ const Test = ()=>{
   useEffect(()=>{
     if(numVis==2){
         setLocal(local+1);
-        if(local==100){
+        if(local==1000){
             if(count==0){
                 setDataV3(tree[`${(count+1)}`]);
                 setCount(count+1);
@@ -110,13 +112,16 @@ const Test = ()=>{
                 setDataV3(tree[`${(count+1)}`]);
                 setCount(count+1);
             }
-            else if(iCount<2){
-                setCount(0);
+            else if(iCount>2){
+              setNumVis(3);
+            }
+            else{
+              setiCount(iCount+1);
             }
             setLocal(0);
         }
       }
-  },[dataV3,local])
+  },[numVis,dataV3,local])
   useEffect(()=>{
             console.log('Dum UseEffect called');
             if(stateGet==1){
@@ -192,7 +197,7 @@ const Test = ()=>{
                 setLocal(0);
             }
         }
-    },[numVis,dataV3,local])
+    },[numVis,local])
     const handlePrev = ()=>{
       setNumVis(numVis-1);
     }
@@ -289,6 +294,34 @@ const Test = ()=>{
                           Machine Learning
                         </h3>
                         <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. Donec gravida tellus ac volutpat gravida. Suspendisse ultrices leo ac vehicula sodales. Mauris accumsan magna nec tellus iaculis bibendum. Nunc ut placerat turpis, sed accumsan eros. Suspendisse volutpat erat nibh, vel interdum mi aliquet in. Pellentesque eu tincidunt tortor, nec mollis dolor.</p>
+                    </Col>
+                </Row>    
+                </div>   
+              </div>
+      }
+       { numVis==3 && <div className="div-move">
+                <Row>
+                  <Col>
+                  <ConvNet id="p3" height={500} width={1200} strength={-70} marginTop="30vh" marginLeft="20vw" position="absolute" iCount={0} zIndex="2" data={convNet["1"]}/>
+                  </Col>
+                </Row>
+                <Row>
+                  <div style={{height:'75vh',width:'100vw',zIndex:'4',position:'absolute',background:'black',opacity:'20%'}}>
+
+                  </div>
+                </Row>
+                <div style={{height:"44.2vh", width:'auto',marginTop:'8%'}}>
+                <Row>
+                    <Col
+                    md={10}
+                    lg={10}
+                    xl={10}
+                    style={{marginLeft:'5vw'}}
+                    >
+                        <h3 style={{color:'black',opacity:'100%'}}>
+                          Convolution Neural Network
+                        </h3>
+                        <p style={{textAlign:'justify',fontSize:'23px',opacity:'80%'}}>Donec nec condimentum est. Nunc eu sapien quis augue lacinia elementum. Nulla at sem non nibh dignissim venenatis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla placerat posuere mollis. Curabitur gravida lacus at nunc sollicitudin, non feugiat nisi maximus. Ut scelerisque orci sit amet ex varius lacinia. Proin ut lorem et risus imperdiet pellentesque ac vel nisl. </p>
                     </Col>
                 </Row>    
                 </div>   
