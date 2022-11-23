@@ -101,7 +101,7 @@ const Test = ()=>{
   useEffect(()=>{
     if(numVis==2){
         setLocal(local+1);
-        if(local==1000){
+        if(local==10){
             if(count==0){
                 setDataV3(tree[`${(count+1)}`]);
                 setCount(count+1);
