@@ -5,15 +5,34 @@ import { Container,Col,Row } from "react-bootstrap";
 import "../assets/css/specGraph.css";
 import "../assets/css/Home.css"
 import Simulate from '../component/simulationGraph';
+import axios from 'axios'
 const Input_Base = ()=>{
+    const [data,setData] = useState({
+        Links_Iterations:{},
+        Node_Iterations:{}
+    });
+    const [countPerIter,setCountPerIter] = useState(0);
+    const [countVis,setCountVis] = useState(1);
+    const [stateVis,setStateVis] = useState(0);
     const [count,setCount] = useState(0);
     const [state,setState] = useState(0);
-    const [nodes,setNodes] = useState({});
-    const [edges,setEdges] = useState([]);
+    const [iterations,setIterations] = useState(-1);
     const [graph,setGraph] = useState({
         nodes:[],
         links:[]
     });
+    const [graph2,setGraph2] = useState({
+        nodes:[],
+        links:[]
+    })
+    const [source,setSource] = useState("");
+    const [target,setTarget] = useState("");
+    const [source2,setSource2] = useState("");
+    const [target2,setTarget2] = useState("");
+    const [edgeError,setEdgeError] = useState({
+        n1:0,
+        n2:0
+    })
     const [state2,setState2] = useState(0);
     const [node,setNode] = useState({
         id:"",
@@ -24,7 +43,12 @@ const Input_Base = ()=>{
     const [edge,setEdge] = useState({
         source:"",
         target:"",
-        color:1
+        color:0
+    })
+    const [edge2,setEdge2] = useState({
+        source:"",
+        target:"",
+        color:0
     })
     const changeToAddNode = ()=>{
         setNode({...node,id:`${count}`});
@@ -40,15 +64,21 @@ const Input_Base = ()=>{
         setNode({...node,val:e.target.value});
     }
     const handleAddN1 = (e)=>{
-        setEdge({...edge,source:e.target.value});
+        setSource(e.target.value);
+        setTarget2(e.target.value);
     }
     const handleAddN2 = (e)=>{
-        setEdge({...edge,target:e.target.value});
+        setSource2(e.target.value);
+        setTarget(e.target.value);
     }
     const handleSubmitNode = ()=>{
         setGraph({
             ...graph,
             nodes:[...graph.nodes,node]
+        });
+        setGraph2({
+            ...graph2,
+            nodes:[...graph2.nodes,node]
         });
         setState2(1);
         setState(0);
@@ -57,18 +87,50 @@ const Input_Base = ()=>{
     const handleSubmitEdge = ()=>{
         setGraph({
             ...graph,
-            links:[...graph.links,edge]
+            links:[...graph.links,{source:source,target:target,color:0},{source:source2,target:target2,color:0}]
+        });
+        setGraph2({...graph2,
+            links:[...graph2.links,{source:source,target:target,color:0},{source:source2,target:target2,color:0}]
         });
         setState2(1);
         setState(0)
     }
     useEffect(()=>{
-        console.log(graph);
+        if(stateVis==2 && countVis<=iterations){
+            if(countPerIter==0){
+                console.log(countVis);
+                //console.log(count.toString())
+                setGraph({links:data['Links_Iterations'][countVis.toString()],nodes:data['Node_Iterations'][countVis.toString()]});
+                setCountPerIter(100);
+                setCountVis(countVis+1);
+            }
+            else{
+                setCountPerIter(countPerIter-1);
+            }
+        }
     })
     const handleSubmitSimulate = ()=>{
         //Add fetch post get command to send data to api that will apply format structuring and will apply bfs
         //formated data.
-        console.log('Apply Algorithm: ',graph)
+        if(stateVis==0){
+            console.log(graph2);
+            setStateVis(1);
+            axios.post('http://127.0.0.1:5000/BFS',{
+                "nodes":graph2.nodes,
+                "links":graph2.links
+            })
+            .then((result)=>{
+                if(result.status==200 && result.data.status=='Success'){
+                    axios.get('http://127.0.0.1:5000/BFS')
+                    .then((response)=>{
+                        console.log(response);
+                        setData({Links_Iterations:response.data.Links_Iterations,Node_Iterations:response.data.Node_Iterations})
+                        setIterations(response.data.iterations);
+                        setStateVis(2);
+                    })
+                }
+            })
+        }
     }
     return (<>
         <Container>
@@ -128,8 +190,29 @@ const Input_Base = ()=>{
                             <h4 style={{color:'white',padding:'1px',paddingTop:'3px',opacity:'50%'}}>Add New Edge</h4>
                             </div>
                             <div className="card-body">
-                                <input type="text" name="node1" onChange={handleAddN1} className="input-add" placeholder="First Node Name"/>
-                                <input type="text" name="node2" onChange={handleAddN2} className="input-add" style={{marginTop:'10px'}} placeholder="Second Node Name"/>
+                                { graph.nodes.length>0 && <select name="node-1" id="node-1-select" onChange={handleAddN1} className="input-add" >
+                                <option value="Default" id="Source-Default" hidden>Select Source</option>
+                                    {
+                                        graph.nodes.map((data,index)=>{
+                                            return (
+                                                <option id={index} value={data.id}>{data.id}</option>
+                                            )
+                                        })
+                                    }
+                                </select>}
+                                {
+                                    graph.nodes.length>0 && <select name="node-2" id="node-2-select" onChange={handleAddN2} 
+                                    className="input-add" style={{marginTop:'10px'}}>
+                                        <option value="Default" id="Target-Default" hidden>Select Target</option>
+                                    {
+                                        graph.nodes.map((data,index)=>{
+                                            return (
+                                                <option id={index} value={data.id}>{data.id}</option>
+                                            )
+                                        })
+                                    }
+                                    </select>
+                                }
                                 <button onClick={handleSubmitEdge} className="btn-add" style={{marginTop:'10px'}} >Add Edge</button>
                             </div>
                         </div>
@@ -137,7 +220,7 @@ const Input_Base = ()=>{
                 </Col>
             </Row>
             <Row>
-                {(state2==1 && <Simulate id="p1" height={100} width={100} strength={-100} data={graph}/>)}
+                {(state2==1 && <Simulate id="p1" height={300} width={100} strength={-50} data={graph}/>)}
             </Row>
         </Container>
     </>)

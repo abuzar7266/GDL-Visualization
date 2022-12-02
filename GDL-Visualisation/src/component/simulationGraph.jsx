@@ -12,7 +12,6 @@ const Graph = (props)=>{
       var divX = d3.select("#"+props.id);
       divX.selectAll("svg > *").remove();
       var svg = divX.append("svg").attr("height",`${props.height}`).attr("width",`${props.width}`)
-      .attr("preserveAspectRatio", "xMinYMin meet")
       .classed("svg-content-2", true);
       var width = svg.attr("width");
       var height = svg.attr("height");
@@ -25,10 +24,12 @@ const Graph = (props)=>{
                           .id(function(d) {
                             return d.id;
                           })
+                          .distance(80)
+                          .strength(1)
                           .links(props.data.links)
                       )
-                      .force("charge",d3.forceManyBody().strength(props.strength))
-                      .force("center",d3.forceCenter(width/2+500,height/2+100))
+                      .force("charge",d3.forceManyBody())//.strength(props.strength))
+                      .force("center",d3.forceCenter(width/2+500,height/2+200))
                       .on("tick",ticked);
       var link = svg
                   .append("g")
@@ -41,7 +42,16 @@ const Graph = (props)=>{
                     return 0.7;
                   })
                   .attr("stroke-linecap", "round")
-                  .style("stroke","#6C3967");
+                  .style("stroke",
+                    function(d){
+                      if(d.color==0){
+                        return "#222B38";
+                      }
+                      else if(d.color==1){
+                        return "red";
+                      }
+                    }
+                  );
       var node = svg.append("g")
                   .attr("class", "nodes")
                 .selectAll("g")
@@ -50,10 +60,13 @@ const Graph = (props)=>{
       var circle = node
                  .append("circle")
                  .attr("r",function(d){
-                  return 10;
+                  return 13;
                  })
                  .attr("fill",function(d){
-                  return "#E66335";
+                  if(d.color==0)
+                    return "#8E939A";
+                  if(d.color==1)
+                    return "#000000";
                  })
                  .attr("stroke","#222B38")
                  .attr("stroke-width",function(d){
@@ -70,8 +83,11 @@ const Graph = (props)=>{
                 .text(function(d) {
                   return d.id;
                 })
-                .attr('x', 6)
-                .attr('y', 3);
+                .attr('x', 15)
+                .attr('y', 8)
+                .attr("fill",function(d){
+                  return "black";
+                });
       function ticked(){
           link
           .attr("x1",function(d){
@@ -88,25 +104,25 @@ const Graph = (props)=>{
           })
           circle
           .attr("cx",function(d){
-            if(d.x>50 && d.x<800){
+            // if(d.x>50 && d.x<800){
               return d.x;
-            }
+            //}
           })
           .attr("cy",function(d){
-            if(d.y>10 && d.y<400){
+            //if(d.y>10 && d.y<400){
               return d.y;
-            }
+            //}
           })
           lables
           .attr("dx",function(d){
-            if(d.x>50 && d.x<800){
+            //if(d.x>50 && d.x<800){
               return d.x;
-            }
+            //}
           })
           .attr("dy",function(d){
-            if(d.y>10 && d.y<400){
+            //if(d.y>10 && d.y<400){
               return d.y;
-            }
+            //}
           })
       }
       function dragstarted(event) {
