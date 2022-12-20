@@ -101,7 +101,7 @@ const Input_Base = ()=>{
                 console.log(countVis);
                 //console.log(count.toString())
                 setGraph({links:data['Links_Iterations'][countVis.toString()],nodes:data['Node_Iterations'][countVis.toString()]});
-                setCountPerIter(100);
+                setCountPerIter(300);
                 setCountVis(countVis+1);
             }
             else{
